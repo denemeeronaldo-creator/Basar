@@ -3,143 +3,134 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Modern Display Cards UI</title>
+<title>ARK Commands</title>
 <style>
-    /* Basic resets */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', sans-serif; background: #0f111a; color: #fff; display: flex; justify-content: center; align-items: center; height: 100vh; overflow-x: hidden; }
-
-    /* Container for cards */
-    .cards-container {
-        display: grid;
-        grid-template-areas: 'stack';
-        place-items: center;
-        position: relative;
-        width: 90%;
-        max-width: 900px;
+    /* Reset & body */
+    * { box-sizing: border-box; margin:0; padding:0; }
+    body {
+        font-family: 'Inter', sans-serif;
+        background: #f8f8f8;
+        color: #111;
+        display: flex;
+        justify-content: center;
+        padding: 50px 20px;
     }
 
-    /* Card style */
+    /* Container */
+    .cards-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        width: 100%;
+        max-width: 1200px;
+    }
+
+    /* Card */
     .card {
         position: relative;
-        width: 22rem;
-        height: 9rem;
-        padding: 1rem 1.5rem;
-        background: rgba(255,255,255,0.05);
-        border: 2px solid rgba(255,255,255,0.1);
+        background: #fff;
         border-radius: 1rem;
-        backdrop-filter: blur(10px);
-        transform: skewY(-8deg);
-        transition: all 0.5s ease;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        padding: 1.5rem;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
         gap: 0.5rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .card:hover {
-        transform: skewY(-8deg) translateY(-10px);
-        border-color: rgba(255,255,255,0.3);
-        background: rgba(255,255,255,0.08);
+        transform: translateY(-10px);
+        box-shadow: 0 20px 35px rgba(0,0,0,0.1);
     }
 
-    .card::after {
-        content: '';
-        position: absolute;
-        top: -5%;
-        right: -1px;
-        width: 20rem;
-        height: 110%;
-        background: linear-gradient(to left, rgba(255,255,255,0.05), transparent);
-        z-index: 0;
-    }
-
-    .card-content {
-        position: relative;
-        z-index: 1;
-    }
-
-    .card-icon {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 2rem;
-        height: 2rem;
-        border-radius: 50%;
-        background: #1e40af;
-        margin-bottom: 0.5rem;
-        flex-shrink: 0;
-    }
-
+    /* Card title */
     .card-title {
         font-size: 1.2rem;
         font-weight: 600;
-        color: #3b82f6;
+        color: #333;
     }
 
-    .card-description {
-        font-size: 1rem;
-        color: #d1d5db;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+    /* Command input field */
+    .card-command {
+        background: #f0f0f0;
+        padding: 0.5rem 0.75rem;
+        border-radius: 0.5rem;
+        font-family: monospace;
+        font-size: 0.9rem;
+        overflow-x: auto;
+        flex-grow: 1;
+        color: #111;
     }
 
-    .card-date {
-        font-size: 0.875rem;
-        color: #9ca3af;
+    /* Copy button */
+    .copy-btn {
+        background: #333;
+        color: #fff;
+        border: none;
+        padding: 0.5rem 0.75rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: background 0.2s ease;
     }
 
-    /* Card stacking offsets */
-    .card:nth-child(1) { transform: skewY(-8deg) translateY(0); z-index: 3; }
-    .card:nth-child(2) { transform: skewY(-8deg) translateX(2rem) translateY(1rem); z-index: 2; }
-    .card:nth-child(3) { transform: skewY(-8deg) translateX(4rem) translateY(2rem); z-index: 1; }
+    .copy-btn:hover {
+        background: #555;
+    }
 
-    /* Icon SVG styling */
-    .card-icon svg {
-        width: 1.2rem;
-        height: 1.2rem;
-        fill: #3b82f6;
+    /* Card footer */
+    .card-footer {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 0.5rem;
     }
 </style>
 </head>
 <body>
 
 <div class="cards-container">
+    <!-- Example card -->
     <div class="card">
-        <div class="card-content">
-            <div class="card-icon">
-                <!-- Sparkles icon -->
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l1.09 3.26L16 6l-2.5 2L15 12l-3-2-3 2 1.5-4L8 6l2.91-.74L12 2z"/></svg>
-            </div>
-            <p class="card-title">Featured</p>
-            <p class="card-description">Discover amazing content</p>
-            <p class="card-date">Just now</p>
+        <div class="card-title">Blue Dye</div>
+        <div class="card-command" id="command1">
+            admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/PrimalItemDye_Blue.PrimalItemDye_Blue_C'" 1 500
+        </div>
+        <div class="card-footer">
+            <button class="copy-btn" onclick="copyCommand('command1')">Copy</button>
         </div>
     </div>
 
     <div class="card">
-        <div class="card-content">
-            <div class="card-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l1.09 3.26L16 6l-2.5 2L15 12l-3-2-3 2 1.5-4L8 6l2.91-.74L12 2z"/></svg>
-            </div>
-            <p class="card-title">Popular</p>
-            <p class="card-description">Trending this week</p>
-            <p class="card-date">2 days ago</p>
+        <div class="card-title">Red Dye</div>
+        <div class="card-command" id="command2">
+            admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/PrimalItemDye_Red.PrimalItemDye_Red_C'" 1 500
+        </div>
+        <div class="card-footer">
+            <button class="copy-btn" onclick="copyCommand('command2')">Copy</button>
         </div>
     </div>
 
     <div class="card">
-        <div class="card-content">
-            <div class="card-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l1.09 3.26L16 6l-2.5 2L15 12l-3-2-3 2 1.5-4L8 6l2.91-.74L12 2z"/></svg>
-            </div>
-            <p class="card-title">New</p>
-            <p class="card-description">Latest updates and features</p>
-            <p class="card-date">Today</p>
+        <div class="card-title">Green Dye</div>
+        <div class="card-command" id="command3">
+            admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/PrimalItemDye_Green.PrimalItemDye_Green_C'" 1 500
+        </div>
+        <div class="card-footer">
+            <button class="copy-btn" onclick="copyCommand('command3')">Copy</button>
         </div>
     </div>
+
+    <!-- Add more cards here following the same structure -->
 </div>
+
+<script>
+    function copyCommand(id) {
+        const commandText = document.getElementById(id).innerText;
+        navigator.clipboard.writeText(commandText)
+            .then(() => alert("Command copied to clipboard!"))
+            .catch(err => console.error("Failed to copy: ", err));
+    }
+</script>
 
 </body>
 </html>
