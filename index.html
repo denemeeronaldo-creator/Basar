@@ -1,113 +1,147 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARK Item Listesi</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #1e1e2f;
-            color: #f0f0f0;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #4caf50;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        header h1 {
-            margin: 0;
-    
-        }
-        header a.discord-link img {
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-        }
-        .container {
-            padding: 20px;
-            max-width: 1000px;
-            margin: auto;
-        }
-        .item-box {
-            background-color: #2e2e3e;
-            padding: 15px;
-            border-radius: 8px;
-            overflow-x: auto;
-            margin-bottom: 15px;
-            font-family: "Courier New", monospace;
-        }
-        footer {
-            text-align: center;
-            padding: 15px;
-            background-color: #333;
-            color: #aaa;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARK Admin Kodları</title>
+<style>
+    /* Genel Tema */
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(270deg, #ffffff, #f0f0f0, #ffffff);
+        background-size: 600% 600%;
+        animation: gradientBG 15s ease infinite;
+        color: #222;
+        margin: 0;
+        padding: 0;
+    }
+
+    @keyframes gradientBG {
+        0% {background-position: 0% 50%;}
+        50% {background-position: 100% 50%;}
+        100% {background-position: 0% 50%;}
+    }
+
+    header {
+        background-color: #4caf50;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #fff;
+    }
+
+    header h1 {
+        margin: 0;
+    }
+
+    header a.discord-link img {
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        transition: transform 0.3s;
+    }
+
+    header a.discord-link img:hover {
+        transform: scale(1.2);
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 1000px;
+        margin: auto;
+    }
+
+    .item-box {
+        background-color: #fff;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        padding: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .item-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .item-box h2 {
+        margin: 0 0 10px 0;
+    }
+
+    .code-box {
+        background-color: #f0f0f0;
+        padding: 10px;
+        border-radius: 5px;
+        font-family: "Courier New", monospace;
+        overflow-x: auto;
+    }
+
+    button.copy-btn {
+        margin-top: 5px;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 4px;
+        background-color: #4caf50;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+    }
+
+    button.copy-btn:hover {
+        background-color: #45a049;
+        transform: scale(1.05);
+    }
+
+    footer {
+        text-align: center;
+        padding: 15px;
+        background-color: #eee;
+        color: #333;
+        font-weight: bold;
+    }
+</style>
 </head>
 <body>
-    <header>
-        <h1>ARK Item Listesi</h1>
-        <a class="discord-link" href="https://discord.gg/5PxMEErpX" target="_blank">
-            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord">
-        </a>
-    </header>
-    <div class="container">
+<header>
+    <h1>ARK Admin Kodları</h1>
+    <a class="discord-link" href="https://discord.gg/5PxMEErpX" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord">
+    </a>
+</header>
 
-        <!-- Item listesi -->
-        <div class="item-box">Generic Dye</div>
-        <div class="item-box">Magenta2 Dye</div>
-        <div class="item-box">Black Dye</div>
-        <div class="item-box">Blue Dye</div>
-        <div class="item-box">Brick Dye</div>
-        <div class="item-box">Brown Dye</div>
-        <div class="item-box">Cantaloupe Dye</div>
-        <div class="item-box">Cyan Dye</div>
-        <div class="item-box">Forest Dye</div>
-        <div class="item-box">Green Dye</div>
-        <div class="item-box">Magenta Dye</div>
-        <div class="item-box">Mud Dye</div>
-        <div class="item-box">Navy Dye</div>
-        <div class="item-box">Olive Dye</div>
-        <div class="item-box">Orange Dye</div>
-        <div class="item-box">Parchment Dye</div>
-        <div class="item-box">Pink Dye</div>
-        <div class="item-box">Purple Dye</div>
-        <div class="item-box">Red Dye</div>
-        <div class="item-box">Royal Dye</div>
-        <div class="item-box">Silver Dye</div>
-        <div class="item-box">Sky Dye</div>
-        <div class="item-box">Slate Dye</div>
-        <div class="item-box">Tan Dye</div>
-        <div class="item-box">Tangerine Dye</div>
-        <div class="item-box">White Dye</div>
-        <div class="item-box">Yellow Dye</div>
-        <div class="item-box">Dodo Sail</div>
-        <div class="item-box">Dungeon Key</div>
-        <div class="item-box">Evil Bear</div>
-        <div class="item-box">Yoyo</div>
-        <div class="item-box">Paddle Ball</div>
-        <div class="item-box">Jump Rope</div>
-        <div class="item-box">Frog Feet</div>
-        <div class="item-box">Metal Bit</div>
-        <div class="item-box">Plucker Bit</div>
-        <div class="item-box">Hat Tribute Dino</div>
-        <div class="item-box">Hat Tribute Player</div>
-        <div class="item-box">Bandanna</div>
-        <div class="item-box">Base Collar</div>
-        <div class="item-box">Chain Collar</div>
-        <div class="item-box">Comfy Collar</div>
-        <div class="item-box">Cone of Shame</div>
-        <div class="item-box">Fancy Collar</div>
-        <div class="item-box">Gold Chain</div>
-        <div class="item-box">Simple Collar</div>
-        <div class="item-box">Spiked Collar</div>
+<div class="container">
 
+    <div class="item-box">
+        <h2>Generic Dye</h2>
+        <div class="code-box" id="code1">admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/PrimalItemDyeGeneric.PrimalItemDyeGeneric_C'" 1 500</div>
+        <button class="copy-btn" onclick="copyCode('code1')">Kodu Kopyala</button>
     </div>
-    <footer>Basar</footer>
+
+    <div class="item-box">
+        <h2>Magenta2 Dye</h2>
+        <div class="code-box" id="code2">admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/PrimalItemDye_ActuallyMagenta.PrimalItemDye_ActuallyMagenta_C'" 1 500</div>
+        <button class="copy-btn" onclick="copyCode('code2')">Kodu Kopyala</button>
+    </div>
+
+    <div class="item-box">
+        <h2>Black Dye</h2>
+        <div class="code-box" id="code3">admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/PrimalItemDye_Black.PrimalItemDye_Black_C'" 1 500</div>
+        <button class="copy-btn" onclick="copyCode('code3')">Kodu Kopyala</button>
+    </div>
+
+</div>
+
+<footer>Basar</footer>
+
+<script>
+function copyCode(id) {
+    const code = document.getElementById(id).innerText;
+    navigator.clipboard.writeText(code).then(() => {
+        alert("Kod kopyalandı!");
+    });
+}
+</script>
 </body>
 </html>
