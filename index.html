@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ARK Admin Commands</title>
+<title>ARK Commands</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -11,7 +11,7 @@
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: #f9f9f9;
+  background: #f5f5f5;
 }
 
 /* NAVBAR */
@@ -21,45 +21,34 @@ header {
   align-items: center;
   padding: 1rem 2rem;
   background: white;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
-.logo svg { width: 40px; }
+.created { text-align: center; font-weight: 600; }
 
-.created {
-  font-weight: 600;
-  font-size: 14px;
-  text-align: center;
-  color: #333;
-}
-
-/* DISCORD */
 .discord-box {
   justify-self: end;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  transition: transform 0.2s;
+  text-align: center;
+  transition: 0.2s;
 }
 .discord-box:hover { transform: scale(1.1); }
 
 .discord-icon {
-  width: 42px;
-  height: 42px;
+  width: 45px;
+  height: 45px;
   fill: #5865F2;
   display: block;
 }
 
 /* HERO */
 .hero {
-  position: relative;
   height: 70vh;
   display: flex;
-  align-items: center;
   justify-content: center;
-  text-align: center;
+  align-items: center;
   color: white;
+  text-align: center;
+  position: relative;
 }
 
 .gradient-bg {
@@ -75,13 +64,10 @@ header {
   100% { transform: scale(1.05); }
 }
 
-.hero h1 { font-size: 3rem; }
-.hero p { opacity: 0.8; }
-
-/* CARDS */
+/* SECTIONS */
 .cards-section {
-  padding: 3rem 1rem;
-  max-width: 1100px;
+  padding: 40px 20px;
+  max-width: 1200px;
   margin: auto;
 }
 
@@ -91,68 +77,32 @@ header {
   gap: 20px;
 }
 
-/* PREMIUM CARD */
+/* CARD */
 .card {
-  position: relative;
   background: white;
-  border-radius: 14px;
   padding: 20px;
-  text-align: center;
-  overflow: hidden;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.card::before {
-  content: "";
-  position: absolute;
-  inset: -2px;
-  border-radius: 16px;
-  background: linear-gradient(120deg, #2979FF, #FF80AB, #FFD600);
-  opacity: 0;
-  transition: opacity 0.4s;
-}
-
-.card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: white;
   border-radius: 14px;
-}
-
-.card * {
-  position: relative;
-  z-index: 2;
+  text-align: center;
+  transition: 0.4s;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
 }
 
 .card:hover {
-  transform: perspective(800px) rotateX(5deg) rotateY(-5deg) scale(1.03);
+  transform: translateY(-10px) scale(1.03);
   box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-}
-
-.card:hover::before {
-  opacity: 1;
 }
 
 /* BUTTON */
 .copy-btn {
-  margin-top: 12px;
+  margin-top: 10px;
   padding: 8px 14px;
   border: none;
-  background: linear-gradient(135deg, #2979FF, #0056d6);
-  color: white;
   border-radius: 8px;
-  font-weight: 600;
-  transition: 0.3s;
+  background: #2979FF;
+  color: white;
+  cursor: pointer;
 }
 
-.copy-btn:hover {
-  transform: scale(1.08);
-  box-shadow: 0 6px 15px rgba(41,121,255,0.4);
-}
-
-/* FOOTER */
 footer {
   text-align: center;
   padding: 2rem;
@@ -165,17 +115,13 @@ footer {
 <body>
 
 <header>
-  <div class="logo">
-    <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="30"/></svg>
-  </div>
-
+  <div></div>
   <div class="created">Created By Basar</div>
-
   <a href="https://discord.gg/5PxMEErpX" target="_blank" class="discord-box">
     <svg class="discord-icon" viewBox="0 0 24 24">
-      <path d="M12 2C6 2 2 6 2 12s4 10 10 10 10-4 10-10S18 2 12 2z"/>
+      <circle cx="12" cy="12" r="10"/>
     </svg>
-    <span style="font-size:12px;font-weight:600;">Join SAS</span>
+    <div>Join SAS</div>
   </a>
 </header>
 
@@ -187,56 +133,91 @@ footer {
   </div>
 </section>
 
+<!-- DYES -->
 <section class="cards-section">
-  <h2>Dyes</h2>
-  <div class="cards-container" id="dye-cards"></div>
+<h2>Dyes</h2>
+<div class="cards-container" id="dyes"></div>
 </section>
 
+<!-- AMBER -->
 <section class="cards-section">
-  <h2>Amber</h2>
-  <div class="cards-container">
-    <div class="card">
-      <div>Spawn Amber Amount</div>
-      <button class="copy-btn" onclick="copyCommand('Spawn Amber Amount')">Copy</button>
-    </div>
-    <div class="card">
-      <div>Spawn Amber Pick</div>
-      <button class="copy-btn" onclick="copyCommand('Spawn Amber Pick')">Copy</button>
-    </div>
-  </div>
+<h2>Amber</h2>
+<div class="cards-container" id="amber"></div>
 </section>
 
-<footer>
-Basar
-</footer>
+<!-- SKINS -->
+<section class="cards-section">
+<h2>Skins</h2>
+<div class="cards-container" id="skins"></div>
+</section>
+
+<footer>Basar</footer>
 
 <script>
 const commands = {
-  "Blue Dye": `admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/PrimalItemDye_Blue.PrimalItemDye_Blue_C'" 1 500`,
-  "Red Dye": `admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/PrimalItemDye_Red.PrimalItemDye_Red_C'" 1 500`,
-  "Green Dye": `admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/PrimalItemDye_Green.PrimalItemDye_Green_C'" 1 500`,
-  "Yellow Dye": `admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/PrimalItemDye_Yellow.PrimalItemDye_Yellow_C'" 1 500`,
-  "Spawn Amber Amount": `Admincheat GiveSlotItem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Resources/PrimalItemResource_DinoAmber.PrimalItemResource_DinoAmber_C'" 1 2147483647`,
-  "Spawn Amber Pick": `SpawnActorSpread "Blueprint'/Game/Mobile/AmberDrop/AmberPickup.AmberPickup_C'" 0 0 0 500 250`
+
+/* DYES */
+"Blue Dye": `admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/PrimalItemDye_Blue.PrimalItemDye_Blue_C'" 1 500`,
+"Red Dye": `admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/PrimalItemDye_Red.PrimalItemDye_Red_C'" 1 500`,
+"Green Dye": `admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/PrimalItemDye_Green.PrimalItemDye_Green_C'" 1 500`,
+"Yellow Dye": `admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/PrimalItemDye_Yellow.PrimalItemDye_Yellow_C'" 1 500`,
+
+/* AMBER */
+"Spawn Amber Amount": `Admincheat GiveSlotItem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Resources/PrimalItemResource_DinoAmber.PrimalItemResource_DinoAmber_C'" 1 2147483647`,
+"Spawn Amber Pick": `SpawnActorSpread "Blueprint'/Game/Mobile/AmberDrop/AmberPickup.AmberPickup_C'" 0 0 0 500 250`,
+
+/* SKINS (TÜMÜ) */
+"Skin Hunter Hat": `admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/Skin/PrimalItemArmor_HunterHat.PrimalItemArmor_HunterHat_C'" 1 500`,
+"Skin Antenna Hat": `admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/Skin/PrimalItemSkin_Antenna.PrimalItemSkin_Antenna_C'" 1 500`,
+"Skin Beta Hat": `admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/Skin/PrimalItemSkin_BetaHat.PrimalItemSkin_BetaHat_C'" 1 500`,
+"Skin Egg Hat": `admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/Skin/PrimalItemSkin_BrokenEggHat.PrimalItemSkin_BrokenEggHat_C'" 1 500`,
+"Skin Bunny Hat": `admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/Skin/PrimalItemSkin_BunnyEarsHat.PrimalItemSkin_BunnyEarsHat_C'" 1 500`,
+"Skin Captain Hat": `admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/Skin/PrimalItemSkin_CaptainHat.PrimalItemSkin_CaptainHat_C'" 1 500`,
+"Skin Cat Hat": `admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/Skin/PrimalItemSkin_CatMask.PrimalItemSkin_CatMask_C'" 1 500`,
+"Skin Chick Hat": `admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/Skin/PrimalItemSkin_ChickHat.PrimalItemSkin_ChickHat_C'" 1 500`,
+"Skin Chili Hat": `admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/Skin/PrimalItemSkin_ChiliHelmet.PrimalItemSkin_ChiliHelmet_C'" 1 500`,
+"Skin Clown Hat": `admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/Skin/PrimalItemSkin_ClownMask.PrimalItemSkin_ClownMask_C'" 1 500`,
+"Skin Devil Hat": `admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/Skin/PrimalItemSkin_DevilHorns.PrimalItemSkin_DevilHorns_C'" 1 500`,
+"Skin Dilo Hat": `admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/Skin/PrimalItemSkin_DiloMask.PrimalItemSkin_DiloMask_C'" 1 500`,
+"Skin Dino Hat": `admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/Skin/PrimalItemSkin_DinoHat.PrimalItemSkin_DinoHat_C'" 1 500`,
+"Skin Dodorex Hat": `admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/Skin/PrimalItemSkin_DodorexMask.PrimalItemSkin_DodorexMask_C'" 1 500`,
+"Skin Dodowyvern Hat": `admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/Skin/PrimalItemSkin_DodowyvernHat.PrimalItemSkin_DodowyvernHat_C'" 1 500`,
+"Skin Dog Hat": `admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/Skin/PrimalItemSkin_DogMask.PrimalItemSkin_DogMask_C'" 1 500`,
+"Skin Explorer Hat": `admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/Skin/PrimalItemSkin_ExplorerHat.PrimalItemSkin_ExplorerHat_C'" 1 500`,
+"Skin Gold Crown": `admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/Skin/PrimalItemSkin_GoldCrown.PrimalItemSkin_GoldCrown_C'" 1 500`,
+"Skin Halo Hat": `admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/Skin/PrimalItemSkin_HaloHat.PrimalItemSkin_HaloHat_C'" 1 500`,
+"Skin Party Hat": `admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/Skin/PrimalItemSkin_PartyHat.PrimalItemSkin_PartyHat_C'" 1 500`,
+"Skin Razer Hat": `admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/Skin/PrimalItemSkin_RazerHat.PrimalItemSkin_RazerHat_C'" 1 500`,
+"Skin Santa Hat": `admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/Skin/PrimalItemSkin_SantaHat.PrimalItemSkin_SantaHat_C'" 1 500`,
+"Skin Skull Hat": `admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/Skin/PrimalItemSkin_SkullMask.PrimalItemSkin_SkullMask_C'" 1 500`,
+"Skin Spinner Hat": `admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/Skin/PrimalItemSkin_SpinnerHat.PrimalItemSkin_SpinnerHat_C'" 1 500`,
+"Skin Top Hat": `admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/Skin/PrimalItemSkin_TopHat.PrimalItemSkin_TopHat_C'" 1 500`,
+"Skin Turkey Hat": `admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/Skin/PrimalItemSkin_TurkeyHat.PrimalItemSkin_TurkeyHat_C'" 1 500`,
+"Skin Vampire Hat": `admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/Skin/PrimalItemSkin_VampireEyes.PrimalItemSkin_VampireEyes_C'" 1 500`,
+"Skin Werewolf Hat": `admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/Skin/PrimalItemSkin_WerewolfHat.PrimalItemSkin_WerewolfHat_C'" 1 500`,
+"Skin Witch Hat": `admincheat giveslotitem "Blueprint'/Game/PrimalEarth/CoreBlueprints/Items/Armor/Skin/PrimalItemSkin_WitchHat.PrimalItemSkin_WitchHat_C'" 1 500`
 };
 
-const container = document.getElementById("dye-cards");
+function render(section, filter){
+  const el = document.getElementById(section);
+  Object.keys(commands).forEach(name=>{
+    if(filter(name)){
+      const card = document.createElement("div");
+      card.className="card";
+      card.innerHTML=`<div>${name}</div>
+      <button class="copy-btn" onclick="copy('${name}')">Copy</button>`;
+      el.appendChild(card);
+    }
+  });
+}
 
-Object.keys(commands).forEach(name => {
-  if(!name.includes("Amber")){
-    const card = document.createElement("div");
-    card.className = "card";
-    card.innerHTML = `
-      <div>${name}</div>
-      <button class="copy-btn" onclick="copyCommand('${name}')">Copy</button>
-    `;
-    container.appendChild(card);
-  }
-});
+render("dyes", n=>n.includes("Dye"));
+render("amber", n=>n.includes("Amber"));
+render("skins", n=>n.startsWith("Skin"));
 
-function copyCommand(name){
+function copy(name){
   navigator.clipboard.writeText(commands[name]);
-  alert("Copied: " + name);
+  alert("Copied: "+name);
 }
 </script>
 
