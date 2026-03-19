@@ -48,11 +48,7 @@ header {
   width: 42px;
   height: 42px;
   fill: #5865F2;
-}
-
-.discord-text {
-  font-size: 12px;
-  font-weight: 600;
+  display: block;
 }
 
 /* HERO */
@@ -82,7 +78,7 @@ header {
 .hero h1 { font-size: 3rem; }
 .hero p { opacity: 0.8; }
 
-/* CARDS SECTION */
+/* CARDS */
 .cards-section {
   padding: 3rem 1rem;
   max-width: 1100px;
@@ -177,9 +173,9 @@ footer {
 
   <a href="https://discord.gg/5PxMEErpX" target="_blank" class="discord-box">
     <svg class="discord-icon" viewBox="0 0 24 24">
-      <path d="M20.317 4.3698..."/>
+      <path d="M12 2C6 2 2 6 2 12s4 10 10 10 10-4 10-10S18 2 12 2z"/>
     </svg>
-    <span class="discord-text">Join SAS</span>
+    <span style="font-size:12px;font-weight:600;">Join SAS</span>
   </a>
 </header>
 
@@ -208,7 +204,6 @@ footer {
       <button class="copy-btn" onclick="copyCommand('Spawn Amber Pick')">Copy</button>
     </div>
   </div>
-  <p style="text-align:center;margin-top:15px;">Made By GRK Group</p>
 </section>
 
 <footer>
